@@ -439,6 +439,18 @@
       color: var(--gray);
     }
 
+    /* ── FOOTER BOTTOM BAR ──────────────────────── */
+    .footer-bottom {
+      background: #050b18;
+      text-align: center;
+      padding: 6px 0;
+    }
+    .footer-bottom span {
+      font-size: 0.58rem;
+      color: #2a3550;
+      letter-spacing: 1px;
+    }
+
     /* ── DIVIDER ─────────────────────────────────── */
     .wave-divider {
       width: 100%;
@@ -730,12 +742,8 @@
       <a class="contact-card" href="mailto:erieedge216@gmail.com">
         <div class="cc-icon">✉️</div>
         <div>
-        
           <div class="cc-value">erieedge216@gmail.com</div>
         </div>
-      </a>
-        <div>
-  
       </a>
       <a class="contact-card" href="https://www.instagram.com/erieedge216/" target="_blank" rel="noopener">
         <div class="cc-icon">📸</div>
@@ -753,17 +761,17 @@
     <p>&copy; 2026 Erie Edge. All rights reserved. &bull; Cleveland, OH &bull; 216</p>
   </footer>
 
+  <!-- FOOTER BOTTOM -->
+  <div class="footer-bottom">
+    <span>toni gilad</span>
+  </div>
+
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
   <script>
-    // ── COUNTDOWN TIMER (24 h from first visit, persists via localStorage) ──
+    // ── COUNTDOWN TIMER (always starts fresh at 24h on every page load) ──
     (function () {
-      const KEY = 'erieEdgePromoEnd';
-      let end = parseInt(localStorage.getItem(KEY), 10);
-      if (!end || isNaN(end)) {
-        end = Date.now() + 24 * 60 * 60 * 1000;
-        localStorage.setItem(KEY, end);
-      }
+      const end = Date.now() + 24 * 60 * 60 * 1000;
       const display = document.getElementById('cd-display');
       function tick() {
         const diff = end - Date.now();
@@ -786,7 +794,7 @@
         if (e.isIntersecting) {
           e.target.classList.add('visible');
         }
-        });
+      });
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
