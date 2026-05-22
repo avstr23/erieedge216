@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="erie-edge-logo.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Erie Edge | Web Design</title>
@@ -439,18 +438,6 @@
       color: var(--gray);
     }
 
-    /* ── FOOTER BOTTOM BAR ──────────────────────── */
-    .footer-bottom {
-      background: #050b18;
-      text-align: center;
-      padding: 6px 0;
-    }
-    .footer-bottom span {
-      font-size: 0.58rem;
-      color: #2a3550;
-      letter-spacing: 1px;
-    }
-
     /* ── DIVIDER ─────────────────────────────────── */
     .wave-divider {
       width: 100%;
@@ -692,7 +679,7 @@
         </div>
         <div class="team-body">
           <h3>Avi Schultz</h3>
-          <div class="team-role">Founder &amp; Web Designer</div>
+          <div class="team-role">Owner</div>
           <p>
             Avi founded Erie Edge with one goal: bring agency-quality web design to businesses
             that deserve better. He handles every design from concept to code, obsessing over
@@ -713,6 +700,22 @@
             Gabriel is your main point of contact throughout the project. He makes sure every
             client feels heard, every question gets answered, and every deadline is met with
             zero stress on your end.
+          </p>
+        </div>
+      </div>
+
+      <!-- Yoni -->
+      <div class="team-card reveal">
+        <div class="team-banner">
+          <div class="team-avatar">YG</div>
+        </div>
+        <div class="team-body">
+          <h3>Yoni Gilad</h3>
+          <div class="team-role">Marketing Director</div>
+          <p>
+            Yoni leads marketing strategy at Erie Edge, helping clients sharpen their message
+            and reach the right audience. From positioning to launch campaigns, he makes sure
+            every brand we build gets seen by the people who matter.
           </p>
         </div>
       </div>
@@ -742,8 +745,12 @@
       <a class="contact-card" href="mailto:erieedge216@gmail.com">
         <div class="cc-icon">✉️</div>
         <div>
+        
           <div class="cc-value">erieedge216@gmail.com</div>
         </div>
+      </a>
+        <div>
+  
       </a>
       <a class="contact-card" href="https://www.instagram.com/erieedge216/" target="_blank" rel="noopener">
         <div class="cc-icon">📸</div>
@@ -761,17 +768,17 @@
     <p>&copy; 2026 Erie Edge. All rights reserved. &bull; Cleveland, OH &bull; 216</p>
   </footer>
 
-  <!-- FOOTER BOTTOM -->
-  <div class="footer-bottom">
-    <span>toni gilad</span>
-  </div>
-
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
   <script>
-    // ── COUNTDOWN TIMER (always starts fresh at 24h on every page load) ──
+    // ── COUNTDOWN TIMER (24 h from first visit, persists via localStorage) ──
     (function () {
-      const end = Date.now() + 24 * 60 * 60 * 1000;
+      const KEY = 'erieEdgePromoEnd';
+      let end = parseInt(localStorage.getItem(KEY), 10);
+      if (!end || isNaN(end)) {
+        end = Date.now() + 24 * 60 * 60 * 1000;
+        localStorage.setItem(KEY, end);
+      }
       const display = document.getElementById('cd-display');
       function tick() {
         const diff = end - Date.now();
@@ -794,7 +801,7 @@
         if (e.isIntersecting) {
           e.target.classList.add('visible');
         }
-      });
+        });
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
